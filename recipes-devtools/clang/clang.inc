@@ -4,11 +4,11 @@ LLVM_DIR = "llvm${LLVM_RELEASE}"
 LLVM_GIT ?= "git://github.com/llvm"
 LLVM_GIT_PROTOCOL ?= "https"
 
-MAJOR_VER = "9"
+MAJOR_VER = "10"
 MINOR_VER = "0"
-PATCH_VER = "1"
+PATCH_VER = "0"
 
-SRCREV ?= "c1a0a213378a458fbea1a5c77b315c7dce08fd05"
+SRCREV ?= "138451c771abe013b7b99650faeb7ae6010f7a8d"
 
 PV = "${MAJOR_VER}.${MINOR_VER}.${PATCH_VER}"
 BRANCH = "release/${MAJOR_VER}.x"
