@@ -67,6 +67,12 @@ LDFLAGS_toolchain-clang_class-nativesdk = "${BUILDSDK_LDFLAGS} \
 # Enable lld globally"
 LDFLAGS_append_toolchain-clang = "${@bb.utils.contains('DISTRO_FEATURES', 'ld-is-lld', ' -fuse-ld=lld', '', d)}"
 
+# Use libcxx headers for native parts
+BUILD_CPPFLAGS_append_toolchain-clang_runtime-llvm = " -isysroot=${STAGING_DIR_NATIVE} -stdlib=libc++"
+
+# Use libgcc for native parts
+BUILD_LDFLAGS_append_toolchain-clang_runtime-llvm = " -rtlib=libgcc -unwindlib=libgcc -stdlib=libc++ -lc++abi -rpath ${STAGING_LIBDIR_NATIVE}"
+
 # choose between 'gcc' 'clang' an empty '' can be used as well
 TOOLCHAIN ??= "gcc"
 # choose between 'gnu' 'llvm'
@@ -109,7 +115,7 @@ def clang_base_deps(d):
     return ""
 
 BASE_DEFAULT_DEPS_toolchain-clang_class-target = "${@clang_base_deps(d)}"
-BASE_DEFAULT_DEPS_append_class-native_toolchain-clang_runtime-llvm = " libcxx-native compiler-rt-native"
+BASE_DEFAULT_DEPS_append_toolchain-clang_runtime-llvm = " libcxx-native compiler-rt-native"
 
 cmake_do_generate_toolchain_file_append_toolchain-clang () {
     cat >> ${WORKDIR}/toolchain.cmake <<EOF
