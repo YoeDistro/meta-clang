@@ -1,14 +1,15 @@
 LICENSE = "NCSA"
 LIC_FILES_CHKSUM = "file://LICENSE.TXT;md5=47e311aa9caedd1b3abf098bd7814d1d"
 
-BRANCH = "llvm_release_180"
+BRANCH = "main"
 SRC_URI = "git://github.com/KhronosGroup/SPIRV-LLVM-Translator;protocol=https;branch=${BRANCH} \
            git://github.com/KhronosGroup/SPIRV-Headers;protocol=https;destsuffix=git/SPIRV-Headers;name=headers;branch=main \
           "
 
-PV = "18.1.0"
-SRCREV = "ad99707fd80189dca0ca76ed89946ae383e9a030"
-SRCREV_headers = "1c6bb2743599e6eb6f37b2969acc0aef812e32e3"
+PV = "19.0.0"
+SRCREV = "abf48906dae1ed48630500a4002df01e783eb1dc"
+# vulkan-sdk-1.3.283.0
+SRCREV_headers = "4f7b471f1a66b6d06462cd4ba57628cc0cd087d7"
 
 SRCREV_FORMAT = "default_headers"
 
@@ -21,7 +22,6 @@ inherit cmake pkgconfig python3native
 # Specify any options you want to pass to cmake using EXTRA_OECMAKE:
 # for CMAKE_SHARED_LIBS=OFF see https://github.com/KhronosGroup/SPIRV-LLVM-Translator/issues/1868
 EXTRA_OECMAKE = "\
-        -DBASE_LLVM_VERSION=${LLVMVERSION} \
         -DBUILD_SHARED_LIBS=OFF \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
