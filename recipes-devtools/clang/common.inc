@@ -6,16 +6,16 @@ LIC_FILES_CHKSUM = "file://llvm/LICENSE.TXT;md5=${LLVMMD5SUM} \
 LICENSE = "Apache-2.0-with-LLVM-exception"
 
 # Snapshot
-#RELEASE ?= "7ba7d8e2f7b6445b60679da826210cdde29eaf8b"
-#BASEURI ?= "https://api.github.com/repos/llvm/llvm-project/tarball/${RELEASE};downloadfilename=llvm-${PV}-${RELEASE}.tar.gz"
-#SOURCEDIR ?= "llvm-llvm-project-${@'${RELEASE}'[0:7]}"
-#SRC_URI[sha256sum] = "cca3fa1c6efb72bd8bc22b926a2c5551e6b8560d95828452bc62b9140cb87a90"
+RELEASE ?= "a69568efe6c4972e71af295c6577b3412dd57c22"
+BASEURI ?= "https://api.github.com/repos/llvm/llvm-project/tarball/${RELEASE};downloadfilename=llvm-${PV}-${RELEASE}.tar.gz"
+SOURCEDIR ?= "llvm-llvm-project-${@'${RELEASE}'[0:7]}"
+SRC_URI[sha256sum] = "aed4f66cd72867b36cc55a0588436933c3d58d3e61ca782b6bf57605d3fdcb09"
 
 # GA Release
-RELEASE ?= "${PV}"
-BASEURI ?= "${LLVM_HTTP}/llvm-project/releases/download/llvmorg-${PV}/llvm-project-${PV}.src.tar.xz"
-SOURCEDIR ?= "llvm-project-${PV}.src"
-SRC_URI[sha256sum] = "82401fea7b79d0078043f7598b835284d6650a75b93e64b6f761ea7b63097501"
+#RELEASE ?= "${PV}"
+#BASEURI ?= "${LLVM_HTTP}/llvm-project/releases/download/llvmorg-${PV}/llvm-project-${PV}.src.tar.xz"
+#SOURCEDIR ?= "llvm-project-${PV}.src"
+#SRC_URI[sha256sum] = "82401fea7b79d0078043f7598b835284d6650a75b93e64b6f761ea7b63097501"
 
 SRC_URI = "\
     ${BASEURI} \
